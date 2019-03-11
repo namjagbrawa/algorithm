@@ -1,5 +1,6 @@
 package com.bingo.algorithm.lintcode;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -10,14 +11,20 @@ public class T2 {
 
     @Test
     public void factorial() {
-        double pow = Math.pow(125, 1 / 5);
-        System.out.println(pow);
+        Assert.assertEquals(0, computerZero(3));
+        Assert.assertEquals(1, computerZero(9));
+        Assert.assertEquals(3, computerZero(16));
+        Assert.assertEquals(6, computerZero(26));
     }
 
     private int computerZero(int number) {
         int sum = 0;
         for (int i = 5; i <= number; i += 5) {
-            sum += Math.pow(i, 1/5);
+            sum++;
+            int current = i;
+            while ((current = current / 5) >= 5) {
+                sum++;
+            }
         }
         return sum;
     }
